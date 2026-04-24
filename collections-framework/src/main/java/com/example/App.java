@@ -39,7 +39,7 @@ public class App {
 
 		
 		Persona persona1 = new Persona(
-			"Juan",
+			"Douglas",
 			"Perez",
 			"Gomez",
 			LocalDate.of(1990, 1, 1),
@@ -100,15 +100,15 @@ public class App {
 		System.out.println("----lista de personas antes de eliminar las personas de genero HOMBRE----");
 		System.out.println(personas);
 
-		Iterator<Persona> iteradorPersonas = personas.iterator();
-		while(iteradorPersonas.hasNext()) {
-			Persona persona = iteradorPersonas.next();
-			if(persona.genero() == Genero.HOMBRE) {
-				iteradorPersonas.remove();
-			}
-		}
-		System.out.println("----lista de personas despues de eliminar las personas de genero HOMBRE----");
-		System.out.println(personas);
+		//Iterator<Persona> iteradorPersonas = personas.iterator();
+		//while(iteradorPersonas.hasNext()) {
+		//	Persona persona = iteradorPersonas.next();
+		//	if(persona.genero() == Genero.HOMBRE) {
+		//		iteradorPersonas.remove();
+		//	}
+		// }
+		// System.out.println("----lista de personas despues de eliminar las personas de genero HOMBRE----");
+		// System.out.println(personas);
 
 		/* Ejercicio 1.
 		*
@@ -118,5 +118,15 @@ public class App {
 		* Hacer un commit del estado actual y posteriormente eliminar o comentar el codigo del uso del iterador anterior para tener la lista de personas original.
 		*/
 
+		Iterator<Persona> iteradorPersonas2 = personas.iterator();
+		while(iteradorPersonas2.hasNext()) {
+			Persona persona = iteradorPersonas2.next();
+			if(persona.genero() == Genero.HOMBRE && persona.nombre().length() == 7) {
+				iteradorPersonas2.remove();
+			}
+		}
+
+		System.out.println("----lista de personas despues de eliminar las personas de genero HOMBRE con 7 caracteres----");
+		System.out.println(personas);
     }
 }
