@@ -35,62 +35,57 @@ public class App {
     	// var realmente es List<Persona>
     	var personas = new ArrayList<Persona>();
     	
-    	var persona1 = Persona.builder()
+    	personas.add(
+    		Persona.builder()
     			.nombre("Duglas")
     			.primerApellido("Taydron")
     			.segundoApellido("Gonzalez")
     			.fechaNacimiento(LocalDate.of(1995,
     					Month.JANUARY, 20))
     			.genero(Genero.HOMBRE)
-    			.build();
+    			.build()
+    	);
     	
-    	var persona2 = Persona.builder()
+    	personas.add(
+    			Persona.builder()
     			.nombre("Carolina")
     			.primerApellido("Garzon")
     			.segundoApellido("Becerra")
     			.fechaNacimiento(LocalDate.of(2000,
     					Month.OCTOBER, 10))
     			.genero(Genero.MUJER)
-    			.build();
+    			.build()
+    	);
     	
-    	var persona3 = Persona.builder()
+    	
+    	personas.add(
+    			Persona.builder()
     			.nombre("Maria")
     			.primerApellido("Garzon")
     			.segundoApellido("Glez")
     			.fechaNacimiento(LocalDate.of(2005,
     					Month.DECEMBER, 14))
     			.genero(Genero.MUJER)
-    			.build();
+    			.build()
+    	);
     	
-    	var persona4 = Persona.builder()
+    	
+    	personas.add(
+    		Persona.builder()
     			.nombre("Jeronimo")
     			.primerApellido("Arenal")
     			.segundoApellido("Gomez")
     			.fechaNacimiento(LocalDate.of(1989,
     					Month.MAY, 22))
     			.genero(Genero.HOMBRE)
-    			.build();
+    			.build()
+    	);
     	
+    	/* La lista resultante, personas, no es de tamaño fijo, porque no se ha obtenido
+    	 * a parti de un array, por lo cual le puedo agregar o eliminar elementos Persona
+    	 * cuando quiera */
     	
-    	personas.add(persona1);
-    	personas.add(persona2);
-    	personas.add(persona3);
-    	personas.add(persona4);
-    	
-    	/* En lugar de invocar el metodo add 4 veces como se ha mostrado anteriormente, 
-    	 * se podria y es preferible agregar elementos a la lista de personas de la forma
-    	 * siguiente: */
-    	
-    	personas = (ArrayList<Persona>) Arrays.asList(persona1, persona2, persona3, persona4);
-    	
-    	
-    	/* Si la lista de personas apunta a null, entonces no podemos agregar elementos Persona
-    	 * a dicha lista, porque no hemos reservado memoria para la lista de personas 
-    	 * 
-    	 * ¿Y, como se reserva memoria para la lista de persona? 
-    	 * 
-    	 * Utilizando el constructor de alguna de las clases que implementa la interfaz
-    	 * List */
+    	System.out.println(personas);
         
     }
 }
