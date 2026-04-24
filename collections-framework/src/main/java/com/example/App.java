@@ -3,6 +3,8 @@ package com.example;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.gwt.user.client.rpc.core.java.util.ArrayList_CustomFieldSerializer;
+
 /**
  * El Framework de Collecciones:
  * 
@@ -31,7 +33,7 @@ public class App {
          */
         
         
-        List<Persona> personas = null;
+		var personas = new ArrayList<Persona>();
 
 
 		
@@ -42,6 +44,8 @@ public class App {
 				.fechaNacimiento(LocalDate.of(1990, 1, 1))
 				.genero(Genero.MASCULINO)
 				.build();
+
+
 		persona persona2 = Persona.builder()
 				.nombre("Maria")
 				.primerApellido("Lopez")
@@ -70,6 +74,7 @@ public class App {
 		
 		*/
 
+		System.out.println(personas);
 
 		}
 
