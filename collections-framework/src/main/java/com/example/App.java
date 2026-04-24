@@ -1,9 +1,10 @@
 package com.example;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-
-import com.google.gwt.user.client.rpc.core.java.util.ArrayList_CustomFieldSerializer;
 
 /**
  * El Framework de Collecciones:
@@ -37,31 +38,33 @@ public class App {
 
 
 		
-		persona persona1 = Persona.builder()
-				.nombre("Juan")
-				.primerApellido("Perez")
-				.segundoApellido("Gomez")
-				.fechaNacimiento(LocalDate.of(1990, 1, 1))
-				.genero(Genero.MASCULINO)
-				.build();
+		Persona persona1 = new Persona(
+			"Juan",
+			"Perez",
+			"Gomez",
+			LocalDate.of(1990, 1, 1),
+			Genero.HOMBRE
+		);
 
+		Persona persona2 = new Persona(
+			"Maria",
+			"Lopez",
+			"Garcia",
+			LocalDate.of(1995, 2, 2),
+			Genero.MUJER
+		);
 
-		persona persona2 = Persona.builder()
-				.nombre("Maria")
-				.primerApellido("Lopez")
-				.segundoApellido("Garcia")
-				.fechaNacimiento(LocalDate.of(1995, 2, 2))
-				.genero(Genero.FEMENINO)
-				.build();
-		persona persona3 = Persona.builder()
-				.nombre("Pedro")
-				.primerApellido("Gonzalez")
-				.segundoApellido("Martinez")
-				.fechaNacimiento(LocalDate.of(2000, 3, 3))
-				.genero(Genero.MASCULINO)
-				.build()
+		Persona persona3 = new Persona(
+			"Pedro",
+			"Gonzalez",
+			"Martinez",
+			LocalDate.of(2000, 3, 3),
+			Genero.HOMBRE
+		);
 
-		personas.add(arg0: persona1);
+		personas.add(persona1);
+		personas.add(persona2);
+		personas.add(persona3);
 
 		/* Si la lista de personas apunta a null, se debe inicializar, no podemos agregar elementos persona a dicha lista, porque no hemos reservado memoria para ella 
 		*
@@ -76,9 +79,44 @@ public class App {
 
 		System.out.println(personas);
 
+		/**
+		 * Traversing Collections:
+		 * En primer lugar 
+		 * https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html#traversing
+		 * 
+		 * En segundo lugar:	
+		 * 
+		 * Ver el documento Arrays, Generics and Collections, que se encuentra en el repositorio de la asignatura, para entender como se pueden utilizar las colecciones con genericos, y como se pueden utilizar los metodos de las colecciones con genericos, como por ejemplo el metodo add(), remove(), etc.
+		 * 
+		 * Existen 3 formas de recorrer una coleccion:
+		 * 1. Utilizando un iterador, que es una interfaz que permite recorrer una coleccion de forma secuencial, utilizando los metodos hasNext() y next() para recorrer la coleccion, y el metodo remove() para eliminar elementos de la coleccion mientras se recorre, pero no se pueden modificar los elementos de la coleccion mientras se recorre, porque se lanzaria una ConcurrentModificationException
+		 * 2. Utilizando un bucle for-each, que es una forma mas sencilla de recorrer una coleccion, pero no se pueden eliminar elementos de la coleccion mientras se recorre, porque se lanzaria una ConcurrentModificationException
+		 * 3. Utilizando un bucle for tradicional, que es una forma mas sencilla de recorrer una coleccion, pero no se pueden eliminar elementos de la coleccion mientras se recorre, porque se lanzaria una ConcurrentModificationException	
+		 * 
+		 */
+		
+		/* Variante 1 de recorrer/iterar utilizando un iterador. A modo de ejemplo: vamos a recorrer la coleccion de personas y eliminar las personas de genero HOMBRE */
+
+		System.out.println("----lista de personas antes de eliminar las personas de genero HOMBRE----");
+		System.out.println(personas);
+
+		Iterator<Persona> iteradorPersonas = personas.iterator();
+		while(iteradorPersonas.hasNext()) {
+			Persona persona = iteradorPersonas.next();
+			if(persona.genero() == Genero.HOMBRE) {
+				iteradorPersonas.remove();
+			}
 		}
+		System.out.println("----lista de personas despues de eliminar las personas de genero HOMBRE----");
+		System.out.println(personas);
 
-
+		/* Ejercicio 1.
+		*
+		* Utilizando un iterador eliminar del listado de personas, aquellas que sean de genero HOMBRE y el nombre tenga 6 caracteres
+		*
+		*
+		* Hacer un commit del estado actual y posteriormente eliminar o comentar el codigo del uso del iterador anterior para tener la lista de personas original.
+		*/
 
     }
 }

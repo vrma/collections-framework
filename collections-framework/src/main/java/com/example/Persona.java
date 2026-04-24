@@ -2,11 +2,6 @@ package com.example;
 
 import java.time.LocalDate;
 
-import lombok.Builder;
-
-@Builder
-
-
 public record Persona(
     String nombre,
     String primerApellido,
