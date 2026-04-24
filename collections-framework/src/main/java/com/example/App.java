@@ -118,19 +118,6 @@ public class App {
     	System.out.println("------------ Listado original de personas ----------");
     	System.out.println(personas);
         
-    	Iterator<Persona> it = personas.iterator();
-    	
-    	while (it.hasNext()) {
-    		
-    		if (it.next().genero().equals(Genero.HOMBRE)) {
-    			it.remove();
-    		}
-    	}
-    	
-    	
-    	System.out.println("--- Listado resultante luego de eliminar las "
-    			+ "personas del genero HOMBRE ---");
-    	System.out.println(personas);
     	
     	/* Ejercicio # 1.
     	 * 
@@ -142,6 +129,25 @@ public class App {
     	 * original
     	 * 
     	 * */
+    	
+    	
+    	Iterator<Persona> it = personas.iterator();
+    	
+    	while(it.hasNext()) {
+    		
+    		var persona = it.next();
+    		
+    		if (persona.genero().equals(Genero.HOMBRE) && 
+    				persona.nombre().length() == 6) 
+    			it.remove();
+    	}
+    	
+    	
+    	System.out.println("--- Listado resultante -----");
+    	System.out.println(personas);
+    	
+   	
+    	
     }
 }
 
