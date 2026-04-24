@@ -1,5 +1,7 @@
 package com.example;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
  *  https://docs.oracle.com/javase/tutorial/collections/index.html
  */
 public class App {
+	
     public static void main(String[] args) {
     	
     	/* Colleccion de numeros enteros, a partir de un array */
@@ -23,6 +26,38 @@ public class App {
     	 * inmutable*/
     	
     	// numerosEnteros.add(6);
+    	
+    	/* Ejemplo de creacion de lista (coleccion) utilizando el metodo add(),
+    	 * que es polimorfico, para agregar elementos a la lista */
+    	
+    	List<Persona> personas = null;
+    	
+    	Persona persona1 = Persona.builder()
+    			.nombre("Duglas")
+    			.primerApellido("Taydron")
+    			.segundoApellido("Gonzalez")
+    			.fechaNacimiento(LocalDate.of(1995,
+    					Month.JANUARY, 20))
+    			.genero(Genero.HOMBRE)
+    			.build();
+    	
+    	personas.add(persona1);
+    	
+    	/* Si la lista de personas apunta a null, entonces no podemos agregar elementos Persona
+    	 * a dicha lista, porque no hemos reservado memoria para la lista de personas 
+    	 * 
+    	 * ¿Y, como se reserva memoria para la lista de persona? 
+    	 * 
+    	 * Utilizando el constructor de alguna de las clases que implementa la interfaz
+    	 * List */
         
     }
 }
+
+
+
+
+
+
+
+
