@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -271,18 +272,66 @@ public class App {
     	// effectively final implica que se le ha asignado un valor y posteriormente no
     	// no se la ha asignado otro
     	
-    	int x = 7;
-    	 
+    	// int x = 7;
     	 
     	
-    	personas.stream().filter(p -> {
-    		
-    		int y = 2;
-    		
-    		y += x;
-    		
-    		return p.genero().equals(Genero.MUJER);
-    	});
+    	// En el codigo siguiente, el metodo average() de la clase Stream devuelve un 
+    	// Optional. ¿Que es el tipo Optional?
+    	// es un tipo de datos que surgio posteriomente a Java 8, y es para proteger el codigo
+    	// del peligroso NullPointerException, porque el optional hay que verlo como una caja
+    	// donde puede venir el valor esperado o un null, y no habria problema porque podemos
+    	// comprobar que hay en la cajita antes de extraer el valor
+    	
+    	OptionalDouble optionalDeSalarioPromedio =  personas.stream()
+    		.filter(p -> p.genero().equals(Genero.MUJER))
+    		.mapToDouble(p -> p.salario())
+    		.average();
+    	
+    	double salarioMedio = 0.0;
+    	
+    	// Del optional de salario podemos extraer
+    	if (optionalDeSalarioPromedio.isPresent()) {
+    		salarioMedio = optionalDeSalarioPromedio.getAsDouble();
+    	}
+    	
+    	// Otra variante de extraer el promedio del optional de Salario medio
+    	
+    	double salarioPromedio =  personas.stream()
+        		.filter(p -> p.genero().equals(Genero.MUJER))
+        		.mapToDouble(p -> p.salario())
+        		.average().orElse(0);
+    	
+    	/* Metodo por Referencia: 
+    	 * 
+    	 * Si la expresion lambda lo unico que va a hacer es invocar al metodo
+    	 * que realiza el trabajo, es mas eficiente pasar por referencia, la direccion
+    	 * de dicho metodo para que realice el trabajo 
+    	 * 
+    	 * Por ejemplo, en el metodo mapToDouble, la expresion lambda lo unico que hace
+    	 * es invocar al metodo que recupera el salario, en este caso, en lugar de utilizar 
+    	 * una lambda es mas eficiente pasar por referencia el propio metodo que
+    	 * recupera el salario. */
+    	
+    	double salarioPromedio2 =  personas.stream()
+        		.filter(p -> p.genero().equals(Genero.MUJER))
+        		.mapToDouble(Persona::salario)
+        		.average().orElse(0);
+    	
+    	/*
+    	 * ¿La siguiente seria una expresion lambda valida? 
+    	 * 
+    	 * () -> 
+    	 * 
+    	 * Rta. SI
+    	 * 
+    	 * void imprimir() {
+    	 * 
+    	 * 		System.out.println("Hola");
+    	 * }
+    	 * 
+    	 * */
+    	
+    	
     }
 }
 
