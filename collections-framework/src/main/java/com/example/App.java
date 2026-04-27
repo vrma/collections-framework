@@ -266,7 +266,23 @@ public class App {
     	 * o effectively final (en efecto, final)
     	 */
     	
-    	personas.stream().filter(p -> p.genero().equals(Genero.MUJER));
+    	 // final int x = 4;
+    	
+    	// effectively final implica que se le ha asignado un valor y posteriormente no
+    	// no se la ha asignado otro
+    	
+    	int x = 7;
+    	 
+    	 
+    	
+    	personas.stream().filter(p -> {
+    		
+    		int y = 2;
+    		
+    		y += x;
+    		
+    		return p.genero().equals(Genero.MUJER);
+    	});
     }
 }
 
