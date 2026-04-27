@@ -229,14 +229,44 @@ public class App {
     	 * 
     	 */
     	
-    	personas.stream().filter(new Predicate<Persona>() {
-
-			@Override
-			public boolean test(Persona p) {
-				// TODO Auto-generated method stub
-				return p.genero().equals(Genero.MUJER) ;
-			}
-		});
+//    	personas.stream().filter(new Predicate<Persona>() {
+//
+//			@Override
+//			public boolean test(Persona p) {
+//				// TODO Auto-generated method stub
+//				return p.genero().equals(Genero.MUJER) ;
+//			}
+//		});
+    	
+    	/**
+    	 * El uso de la clase anonima, o mejor dicho, de la expresion de clase anonima
+    	 * es mucho mejor que la implementacion de la clase Filtro, pero todavia continua 
+    	 * siendo una exageracion, si no se van a declarar variables adicionales, ni
+    	 * se va a implementar otra cosa que no sea el metodo abstracto de la interfaz
+    	 * funcional Predicate.
+    	 * 
+    	 * Y se hace la luz, y aperecen las EXPRESIONES LAMBDA
+    	 * 
+    	 * ¿Que es una expresion lambda?
+    	 * 
+    	 * Una expresion lambda hay que verla como un "metodo anonimo", por lo general se 
+    	 * utilizan para implementar el metodo abstracto de las Interfaces Funcionales
+    	 * 
+    	 * Concretamente para el ejemplo que estamos desarrollando ahora, vamos a centrarnos 
+    	 * en el metodo test 
+    	 * 
+    	 * Syntax of Lambda Expressions
+    	 * 
+    	 * https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#approach6
+    	 * 
+    	 * NOTA IMPORTANTE SOBRE LAS LAMBDAS Y LAS CLASES ANONIMAS
+    	 * 
+    	 * Tanto las clases anonimas como las expresiones lambda solamente se pueden relacionar
+    	 * con variables locales (declaradas dentro de metodos) que sean explicitamente final
+    	 * o effectively final (en efecto, final)
+    	 */
+    	
+    	personas.stream().filter(p -> p.genero().equals(Genero.MUJER));
     }
 }
 
