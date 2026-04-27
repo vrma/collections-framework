@@ -146,6 +146,19 @@ public class App {
     	System.out.println("--- Listado resultante -----");
     	System.out.println(personas);
     	
+    	/* VARIANTE # 2 de Iterar o recorrer una coleccion. Utilizando una 
+    	 * sentencia for mejorada
+    	 * 
+    	 * A modo de ejemplo, intentemos recorrer la lista de personas y eliminar las personas
+    	 * del genero mujer, pera comprobar que no es posible eliminar un elemento de la 
+    	 * coleccion mientras se recorrere utilizando un for mejorado */
+    	
+    	for (var p: personas) {
+    		
+    		if (p.genero().equals(Genero.MUJER)) 
+    			personas.remove(p);
+    	}
+    	
    	
     	
     }
