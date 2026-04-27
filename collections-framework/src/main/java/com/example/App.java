@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * El Framework de Collecciones:
@@ -44,6 +45,7 @@ public class App {
     			.fechaNacimiento(LocalDate.of(1995,
     					Month.JANUARY, 20))
     			.genero(Genero.HOMBRE)
+    			.salario(3500.50)
     			.build()
     	);
     	
@@ -55,6 +57,7 @@ public class App {
     			.fechaNacimiento(LocalDate.of(2000,
     					Month.OCTOBER, 10))
     			.genero(Genero.MUJER)
+    			.salario(3600.45)
     			.build()
     	);
     	
@@ -67,6 +70,7 @@ public class App {
     			.fechaNacimiento(LocalDate.of(2005,
     					Month.DECEMBER, 14))
     			.genero(Genero.MUJER)
+    			.salario(3650.30)
     			.build()
     	);
     	
@@ -79,6 +83,7 @@ public class App {
     			.fechaNacimiento(LocalDate.of(1989,
     					Month.MAY, 22))
     			.genero(Genero.HOMBRE)
+    			.salario(4200.25)
     			.build()
     	);
     	
@@ -109,7 +114,7 @@ public class App {
     	 * 
     	 * 3- (La variante sugerida, la mejor) Utilizando Operaciones de Agregado, es decir:
     	 *    Programacion Funcional, metodos de la clase Stream, metodos por referencia
-    	 *    y operaciones lambda */
+    	 *    y expresiones lambda */
     	
     	/* Variante # 1 de Recorrer/Iterar sobre una coleccion, es decir, utilizando un 
     	 * Iterator. A modo de ejemplo, vamos a recorrer la coleccion de personas y 
@@ -153,13 +158,51 @@ public class App {
     	 * del genero mujer, pera comprobar que no es posible eliminar un elemento de la 
     	 * coleccion mientras se recorrere utilizando un for mejorado */
     	
-    	for (var p: personas) {
-    		
-    		if (p.genero().equals(Genero.MUJER)) 
-    			personas.remove(p);
-    	}
     	
-   	
+		/*
+		 * for (var p: personas) {
+		 * 
+		 * if (p.genero().equals(Genero.MUJER)) personas.remove(p); }
+		 */
+    	 	
+    	/**
+    	 * OPERACIONES DE AGREGADO PARA RECORRER LAS COLECCIONES.
+    	 * 
+    	 * https://docs.oracle.com/javase/tutorial/collections/streams/index.html
+    	 * 
+    	 * Ejemplo: Calcular el salario promedio de las personas del genero MUJER
+    	 * 
+    	 * Las operaciones de agregado implican convertir la coleccion en un flujo (stream)
+    	 * de elementos que a circular por una tuberia imaginaria o pipeline. Por tuberia o 
+    	 * pipeline se entiende una secuencia de metodos de la clase Stream, es decir, 
+    	 * una secuencia de operaciones de agregado, es decir, metodos que para obtener un 
+    	 * resultado agrupan elementos del flujo.
+    	 * 
+    	 * Una tuberia o pipeline, tiene un origen que puede un array, una coleccion, un socket
+    	 * , un fichero, una consulta de base de datos, etc, tambien la tuberia tiene cero, una
+    	 * o muchas operaciones intermedias y UNA SOLA operacion terminal.
+    	 * 
+    	 * Lo primero es utilizar el metodo stream(), que tambien podria ser parallelStream(),
+    	 * para convertir la coleccion en un flujo de elementos del mismo tipo de la coleccion
+    	 * 
+    	 * A partir de tener un flujo de elementos entran a funcionar los metodos de la clase
+    	 * Stream, operaciones intermedias, como podria ser el metodo filter, para permitir que 
+    	 * solamente circule al proximo nivel de la tuberia las personas del Genero MUJER
+    	 * 
+    	 * Predicate es una interfaz funcional, es decir, un tipo de interfaz que puede tener
+    	 * metodos por defecto, que tienen, cuerpo, metodos estaticos, etc., pero SOLAMENTE UN 
+    	 * METODO ABSTRACTO. Un predicate es una condicion que tiene que cumplir un elemento 
+    	 * que circula por la tuberia o pipeline
+    	 * 
+    	 */
+    	
+    	// Stream<Persona> flujoDePersona = personas.stream();
+    	
+    	// Filtro filtro = new Filtro();
+    	
+    	// personas.stream().filter(filtro)
+    	
+    	personas.stream().filter(new Filtro());
     	
     }
 }
