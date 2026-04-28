@@ -380,7 +380,8 @@ public class App {
     	// Mostrar la lista de personas resultante
     	personas.stream().forEach(persona -> System.out.println(persona));
     	
-    	
+    	/* ¿Como ordenar la lista de personas en Orden Natural inverso, es decir, 
+    	 * lexicograficamente de la z a la A */
     }
 }
 

@@ -19,13 +19,15 @@ public record Persona(
 		
 		// Resultado de la comparacion por el primer apellido, de dos personas
 		// de la lista de personas
-		int cmpPrimerApellido = this.primerApellido
-					.compareTo(persona.primerApellido());
+		// Para que el orden sea Lexicograficamente de la Z a la A, hay que 
+		// ubicar primero el objeto que se recibe como parametro
+		int cmpPrimerApellido = persona.primerApellido()
+				.compareTo(this.primerApellido);
 		// Resultado de la comparacion por el segundo apellido
-		int cmpSegundoApellido = this.segundoApellido
-					.compareTo(persona.segundoApellido());
+		int cmpSegundoApellido = persona.segundoApellido()
+				.compareTo(this.segundoApellido);
 		// Resultado de la comparacion por el nombre
-		int cmpNombre = this.nombre.compareTo(persona.nombre());
+		int cmpNombre = persona.nombre().compareTo(this.nombre);
 		
 		return cmpPrimerApellido != 0 ? cmpPrimerApellido :
 					cmpSegundoApellido != 0 ? cmpSegundoApellido :
