@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.OptionalDouble;
@@ -66,9 +68,9 @@ public class App {
     	
     	personas.add(
     			Persona.builder()
-    			.nombre("Maria")
+    			.nombre("Carolina")
     			.primerApellido("Garzon")
-    			.segundoApellido("Glez")
+    			.segundoApellido("Becerra")
     			.fechaNacimiento(LocalDate.of(2005,
     					Month.DECEMBER, 14))
     			.genero(Genero.MUJER)
@@ -138,16 +140,16 @@ public class App {
     	 * */
     	
     	
-    	Iterator<Persona> it = personas.iterator();
-    	
-    	while(it.hasNext()) {
-    		
-    		var persona = it.next();
-    		
-    		if (persona.genero().equals(Genero.HOMBRE) && 
-    				persona.nombre().length() == 6) 
-    			it.remove();
-    	}
+//    	Iterator<Persona> it = personas.iterator();
+//    	
+//    	while(it.hasNext()) {
+//    		
+//    		var persona = it.next();
+//    		
+//    		if (persona.genero().equals(Genero.HOMBRE) && 
+//    				persona.nombre().length() == 6) 
+//    			it.remove();
+//    	}
     	
     	
     	System.out.println("--- Listado resultante -----");
@@ -343,6 +345,42 @@ public class App {
     	 */
     	
     	List<String> listaInmutable = List.of("Jeronimo", "Duglas", "Carolina");
+    	
+    	
+    	/**
+    	 * Object Ordering (Ordenamiento de Objetos)
+    	 * 
+    	 * https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html
+    	 * 
+    	 */
+    	
+    	List<String> nombres = Arrays.asList("Jeronimo", "Duglas", "Carolina");
+    	
+    	Collections.sort(nombres);
+    	
+    	System.out.println(nombres);
+    	
+    	/*
+    	 * 
+    	 * Intentar ordenar la lista de personas 
+    	 * 
+    	 * El codigo siguiente da error, porque el tipo Persona no implementa la interfaz
+    	 * comparable de Persona, a diferencia de todos los tipos buit-in de Java que si
+    	 * implementan dicha interfaz.
+    	 * 
+    	 * A modo de ejemplo: Vamos a establecer un criterio de ordenamiento para que se 
+    	 * ordene el listado de personas, primero por el primer apellido, luego el sugundo
+    	 * y si hay dos personas con el mismo primer y segundo apellido que determine 
+    	 * el nombre.
+    	 * */
+    	
+    	Collections.sort(personas);
+    	
+    	
+    	// Mostrar la lista de personas resultante
+    	personas.stream().forEach(persona -> System.out.println(persona));
+    	
+    	
     }
 }
 
